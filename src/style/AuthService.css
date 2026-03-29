@@ -78,8 +78,22 @@ button:hover{
 
 }
 
-a{
+
+.switchAction {
     color: #5c2590;
-    text-decoration: none;
-    font-size: 12px;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+    user-select: none;
+}
+
+.switchAction:hover {
+    cursor: pointer;
+    color: #3a1660;
+}
+
+.switchAction:active {
+    cursor: pointer;
+    color: #1e0a36;
 }

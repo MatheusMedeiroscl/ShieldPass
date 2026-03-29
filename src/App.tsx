@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import { Home } from "./Pages/Home";
-import { LoginPage } from "./Pages/Login";
-import { RegisterPage } from "./Pages/Register";
+import { AuthPage } from "./Pages/AuthPage";
 
 
 export function App(){
@@ -19,9 +18,7 @@ export function App(){
         )}
         {!isAuthenticated && (
             <Routes>
-                <Route path="*"  element={<LoginPage/>}/>
-                <Route path="/login" element={<LoginPage/>}/>
-                <Route path="/register" element={<RegisterPage/>}/>
+                <Route path="*"  element={<AuthPage/>}/>
             </Routes>
         )}
 
