@@ -1,12 +1,7 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { LoginPage } from './Pages/Login'
-import "./style/index.css"
+import { App } from './App'
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  <App/>
 
-   <LoginPage/>
-   
-  </StrictMode>,
 )
