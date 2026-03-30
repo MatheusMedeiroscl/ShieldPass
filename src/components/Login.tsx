@@ -1,15 +1,25 @@
 import { useState } from "react";
 import { AuthService } from "../shared/services/AuthService";
+import { useAuth } from "../shared/context/AuthProvider";
 
 
 export function Login(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogin = () => {
-            AuthService.login(email, password);
-            setPassword('');
-            setEmail('');
+    const {login} = useAuth(); 
+
+    const handleLogin = async () => {
+      try{
+        const token = await AuthService.login(email, password);
+        login(token);
+
+        setEmail('');
+        setPassword('');
+      }catch(error){
+        alert("email ou senha inválidos")
+        console.log(error);
+      };
     }
 
 

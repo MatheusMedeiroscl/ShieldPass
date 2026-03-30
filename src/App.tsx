@@ -1,27 +1,11 @@
-import { BrowserRouter, Route, Routes } from "react-router";
-import { Home } from "./Pages/Home";
-import { AuthPage } from "./Pages/AuthPage";
+import { AppRoutes } from "./routes";
+import { AuthProvider } from "./shared/context/AuthProvider";
 
 
 export function App(){
-
-    const isAuthenticated = false;
-
-
     return(
-    <BrowserRouter>
-        {isAuthenticated && (
-            <Routes>
-                <Route path="/home" element={<Home/>}/>
-                <Route path="*"  element={<Home/>}/>
-            </Routes>
-        )}
-        {!isAuthenticated && (
-            <Routes>
-                <Route path="*"  element={<AuthPage/>}/>
-            </Routes>
-        )}
-
-    </BrowserRouter>
+        <AuthProvider>
+            <AppRoutes/>
+        </AuthProvider>
     )
 }

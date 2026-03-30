@@ -14,13 +14,12 @@ export const AuthService = {
             })
         });
 
-
-        if(!response.ok){
+    if(!response.ok){
             throw new Error(`HTTP error! status: ${response.status}`);
-        }
+    }
 
-        const data = await response.json();
-        console.log(data)
+    const token = await response.json();
+    return token;
     },
 
     async register(name: string, email: string, password:string){
