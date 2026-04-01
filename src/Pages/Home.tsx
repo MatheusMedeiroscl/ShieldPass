@@ -4,9 +4,9 @@ import { useAuth } from "../shared/context/AuthProvider"
 
 
 export function Home(){
-    const {logout} = useAuth();
+    const {logout, user} = useAuth();
     return(<>
 
-        <button onClick={logout}>Logout</button>
+        <button onClick={logout}>{user?.name}</button>
     </>)
 }

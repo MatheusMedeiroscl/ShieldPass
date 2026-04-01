@@ -3,6 +3,7 @@ const URL = 'http://localhost:8080/auth'
 
 export const AuthService = {
     async login (email: string, password: string){
+
         const response = await fetch(`${URL}/login`,{
             method: "POST",
             headers: {
@@ -18,8 +19,9 @@ export const AuthService = {
             throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const token = await response.json();
-    return token;
+
+    const data = await response.json();
+    return data.token;
     },
 
     async register(name: string, email: string, password:string){
@@ -43,5 +45,24 @@ export const AuthService = {
 
         alert("Success Register")
 
+    },
+    
+    async getme (newToken: string){
+  
+        const response = await fetch(`${URL}/me`,{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${newToken}` // token vai no header
+            }
+        });
+
+    if(!response.ok){
+            throw new Error(`HTTP error! status: ${response.status}`);
     }
+
+    const user = await response.json();
+    return user;
+    }
+
 }
