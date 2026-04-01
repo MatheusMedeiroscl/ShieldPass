@@ -2,7 +2,6 @@ import { useState } from "react"
 import "../style/AuthService.css"
 import { Login } from "../components/Login";
 import { Register } from "../components/Register";
-import { useAuth } from "../shared/context/AuthProvider";
 
 export function AuthPage() {
     const [page, setPage] = useState('login');

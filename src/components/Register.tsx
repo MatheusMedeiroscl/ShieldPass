@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AuthService } from "../shared/services/AuthService";
+import { useAuth } from "../shared/context/AuthProvider";
 
 
 export function Register(){
@@ -7,11 +8,16 @@ export function Register(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleRegister = () => {
-        AuthService.register(name,email,password);
-        setPassword('');
-        setEmail('');
-        setName('');
+    const {login}= useAuth();
+
+    const handleRegister = async () => {
+        try{
+           await AuthService.register(name,email,password);
+          const token = await  AuthService.login(email, password);
+          login(token);
+        } catch (error) {
+            alert("Erro ao criar conta");
+        }
     }
 
 
